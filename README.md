@@ -2,18 +2,23 @@
 
 An AI-powered journaling system for nature wellness sessions. Users write about their forest, ocean, and mountain experiences; the system analyzes emotions using an LLM and surfaces insights over time.
 
+## Live Demo
+🌐 **Frontend:** https://arvyax-journal-1-4hbo.onrender.com
+⚙️ **Backend API:** https://arvyax-backend-api.onrender.com
+📦 **GitHub:** https://github.com/Sowmyakandula19/arvyax-journal
+
 ---
 
 ## Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- An [Anthropic API key](https://console.anthropic.com/)
+- A free [Groq API key](https://console.groq.com) — no credit card required
 
 ### 1. Clone & Install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Sowmyakandula19/arvyax-journal.git
 cd arvyax-journal
 
 # Install backend deps
@@ -30,8 +35,18 @@ npm install
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env and set your ANTHROPIC_API_KEY
+# Edit .env and set your GROQ API key
 ```
+
+Your `.env` should look like:
+```
+ANTHROPIC_API_KEY=gsk_your_groq_key_here
+PORT=3001
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:3000
+```
+
+> The variable is named `ANTHROPIC_API_KEY` in the code but holds your Groq key.
 
 ### 3. Run
 
@@ -54,7 +69,7 @@ npm start
 ```bash
 # From repo root
 cp backend/.env.example .env
-# Edit .env — set ANTHROPIC_API_KEY
+# Edit .env — set your Groq API key as ANTHROPIC_API_KEY
 
 docker-compose up --build
 # Frontend: http://localhost:3000
@@ -161,14 +176,15 @@ GET /health
 
 ## Tech Stack
 
-| Layer    | Technology                       |
-|----------|----------------------------------|
-| Backend  | Node.js + Express                |
-| Database | SQLite (via `better-sqlite3`)    |
-| LLM      | Anthropic Claude Haiku (API)     |
-| Frontend | React (CRA)                      |
-| Caching  | SQLite `analysis_cache` table    |
-| Docker   | Docker Compose                   |
+| Layer    | Technology                        |
+|----------|-----------------------------------|
+| Backend  | Node.js + Express                 |
+| Database | SQLite (via `better-sqlite3`)     |
+| LLM      | Groq API (llama-3.1-8b-instant)   |
+| Frontend | React (CRA)                       |
+| Caching  | SQLite `analysis_cache` table     |
+| Hosting  | Render (backend + frontend)       |
+| Docker   | Docker Compose                    |
 
 ---
 
@@ -209,10 +225,11 @@ arvyax-journal/
 
 - ✅ Journal entry creation with ambience tagging
 - ✅ Paginated entry retrieval
-- ✅ LLM emotion analysis (Anthropic Claude Haiku)
+- ✅ LLM emotion analysis (Groq — free, no credit card)
 - ✅ Insights API with emotion & ambience breakdowns
 - ✅ **Analysis caching** — identical text reuses cached result (SHA-256 keyed)
 - ✅ **Rate limiting** — 100 req/15 min general; 10 req/min on analysis endpoint
 - ✅ **Docker setup** — `docker-compose up --build`
 - ✅ Input validation & structured error responses
 - ✅ WAL-mode SQLite for better concurrent read performance
+- ✅ Deployed live on Render
