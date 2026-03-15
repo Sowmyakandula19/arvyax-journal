@@ -4,7 +4,9 @@ An AI-powered journaling system for nature wellness sessions. Users write about 
 
 ## Live Demo
 🌐 **Frontend:** https://arvyax-journal-1-4hbo.onrender.com
+
 ⚙️ **Backend API:** https://arvyax-backend-api.onrender.com
+
 📦 **GitHub:** https://github.com/Sowmyakandula19/arvyax-journal
 
 ---
